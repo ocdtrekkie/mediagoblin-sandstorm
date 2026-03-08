@@ -25,6 +25,52 @@ from random import getrandbits
 from urllib.parse import unquote
 
 
+def _get_user_name_field():
+    for field in ("username", "slug", "url_slug"):
+        if hasattr(User, field):
+            return field
+    return None
+
+
+def _create_user_for_sandstorm(name):
+    # Try the app-provided helper first because it can track schema changes.
+    class _Field:
+        def __init__(self, data):
+            self.data = data
+
+    class _Form:
+        pass
+
+    form = _Form()
+    form.username = _Field(name)
+    form.email = _Field("{0}@example.invalid".format(name))
+
+    try:
+        return create_basic_user(form)
+    except Exception:
+        user = User()
+        name_field = _get_user_name_field()
+        if name_field:
+            setattr(user, name_field, name)
+        if hasattr(user, "email"):
+            user.email = "{0}@example.invalid".format(name)
+        if hasattr(user, "pw_hash"):
+            user.pw_hash = str(getrandbits(192))
+        user.save()
+        return user
+
+
+def _add_missing_privileges(user, privileges):
+    existing_ids = {priv.id for priv in user.all_privileges if priv is not None}
+    for privilege in privileges:
+        if privilege is None:
+            continue
+        if privilege.id in existing_ids:
+            continue
+        user.all_privileges.append(privilege)
+        existing_ids.add(privilege.id)
+
+
 @auth_enabled
 def login(request):
     login_failed = False
@@ -51,13 +97,11 @@ def login(request):
                       'instance.'))
                 return redirect(request, 'index')
 
-            while User.query.filter_by(username=username).count() > 0:
+            name_field = _get_user_name_field()
+            while name_field and User.query.filter(getattr(User, name_field) == username).count() > 0:
                 username += '2'
 
-            user = User()
-            user.username = username
-            user.email = ''
-            user.pw_hash = str(getrandbits(192))
+            user = _create_user_for_sandstorm(username)
 
             default_privileges = [
                 Privilege.query.filter(Privilege.privilege_name==u'commenter').first(),
@@ -76,7 +120,7 @@ def login(request):
                 Privilege.query.filter(Privilege.privilege_name==u'uploader').first()]
 
         if default_privileges:
-            user.all_privileges += default_privileges
+            _add_missing_privileges(user, default_privileges)
         user.save()
 
         if not suser:
