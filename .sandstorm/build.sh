@@ -37,14 +37,23 @@ fi
 
 if [ -f /opt/mediagoblin/requirements.txt ] ; then
     REQS_HASH_FILE="$BUILD_STATE_DIR/requirements.sha256"
+    VENV_REQS_HASH_FILE="$VENV/requirements.sha256"
 
     CURRENT_REQS_HASH="$(sha256sum /opt/mediagoblin/requirements.txt | awk '{print $1}')"
     PREVIOUS_REQS_HASH="$(cat "$REQS_HASH_FILE" 2>/dev/null || true)"
+    PREVIOUS_VENV_REQS_HASH="$(cat "$VENV_REQS_HASH_FILE" 2>/dev/null || true)"
 
-    if [ "$CURRENT_REQS_HASH" != "$PREVIOUS_REQS_HASH" ] ; then
-        echo "requirements.txt changed; installing Python deps"
+    if [ ! -x "$VENV/bin/python" ] || [ ! -x "$VENV/bin/pip" ] ; then
+        echo "virtualenv is incomplete; recreating $VENV"
+        rm -rf "$VENV"
+        virtualenv "$VENV"
+    fi
+
+    if [ "$CURRENT_REQS_HASH" != "$PREVIOUS_REQS_HASH" ] || [ "$CURRENT_REQS_HASH" != "$PREVIOUS_VENV_REQS_HASH" ] ; then
+        echo "requirements state changed; installing Python deps"
         $VENV/bin/pip install -r /opt/mediagoblin/requirements.txt
         echo "$CURRENT_REQS_HASH" > "$REQS_HASH_FILE"
+        echo "$CURRENT_REQS_HASH" > "$VENV_REQS_HASH_FILE"
     else
         echo "requirements.txt unchanged; skipping pip install"
     fi
@@ -85,6 +94,11 @@ PREVIOUS_AUTOTOOLS_HASH="$(cat "$AUTOTOOLS_HASH_FILE" 2>/dev/null || true)"
 
 if [ "$CURRENT_AUTOTOOLS_HASH" != "$PREVIOUS_AUTOTOOLS_HASH" ] ; then
     echo "autotools inputs changed; running autogen/configure"
+    sudo ./autogen.sh
+    ./configure
+    echo "$CURRENT_AUTOTOOLS_HASH" > "$AUTOTOOLS_HASH_FILE"
+elif [ ! -x ./configure ] || [ ! -f Makefile ] ; then
+    echo "autotools outputs missing; running autogen/configure"
     sudo ./autogen.sh
     ./configure
     echo "$CURRENT_AUTOTOOLS_HASH" > "$AUTOTOOLS_HASH_FILE"
