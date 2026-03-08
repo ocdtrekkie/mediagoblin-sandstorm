@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+export TZ=Etc/UTC
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
 export PIP_CACHE_DIR=/var/tmp/pip-cache
 mkdir -p "$PIP_CACHE_DIR"
 BUILD_STATE_DIR=/var/tmp/mediagoblin-build-state

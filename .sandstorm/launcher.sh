@@ -4,6 +4,9 @@ set -euo pipefail
 
 export HOME=/var
 export TMPDIR=/var/tmp
+export TZ=Etc/UTC
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
 VENV=/opt/app-venv
 export PATH="$VENV/bin:$PATH"
 
