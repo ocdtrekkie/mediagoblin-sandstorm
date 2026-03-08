@@ -13,6 +13,8 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
 from mediagoblin import mg_globals, messages
 from mediagoblin.auth.tools import register_user, create_basic_user
 from mediagoblin.db.models import User, Privilege
@@ -23,6 +25,8 @@ from mediagoblin.plugins.sandstorm.models import SandstormUser
 
 from random import getrandbits
 from urllib.parse import unquote
+
+_LOG = logging.getLogger(__name__)
 
 
 def _get_user_name_field():
@@ -47,7 +51,13 @@ def _create_user_for_sandstorm(name):
 
     try:
         return create_basic_user(form)
-    except Exception:
+    except (AttributeError, TypeError, ValueError) as exc:
+        _LOG.warning(
+            "Falling back to manual Sandstorm user creation for %r due to "
+            "create_basic_user compatibility error: %s",
+            name,
+            exc,
+        )
         user = User()
         name_field = _get_user_name_field()
         if name_field:
