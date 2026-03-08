@@ -7,8 +7,10 @@ set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+
 apt-get update
-apt-get install -y nginx uwsgi uwsgi-plugin-python3 build-essential python3-setuptools python3-dev python3-virtualenv git libxml2-dev libxslt1-dev python3-lxml python-pil libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk python3-numpy python3-npx python3-scipy python3-pip python3-venv python3-full automake gawk nodejs npm
+apt-get install -y nginx uwsgi uwsgi-plugin-python3 build-essential python3-setuptools python3-dev python3-virtualenv git libxml2-dev libxslt1-dev python3-lxml python3-pil libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk python3-numpy python3-npx python3-scipy python3-pip python3-venv python3-full automake gawk nodejs git
 
 service nginx stop
 systemctl disable nginx

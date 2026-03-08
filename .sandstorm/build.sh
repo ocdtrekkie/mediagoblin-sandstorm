@@ -14,6 +14,12 @@ if [ ! -e /opt/mediagoblin ]; then
 	sudo chmod -R 777 /opt/mediagoblin
 fi
 
+# Upstream setup.cfg can reference mediagoblin.__version__, which may be missing.
+# Pin a local version string for the dev package build path.
+if grep -Eq '^version[[:space:]]*=[[:space:]]*attr:[[:space:]]*mediagoblin\.__version__[[:space:]]*$' /opt/mediagoblin/setup.cfg ; then
+    sudo sed -i -E 's/^version[[:space:]]*=[[:space:]]*attr:[[:space:]]*mediagoblin\.__version__[[:space:]]*$/version = 0+sandstorm/' /opt/mediagoblin/setup.cfg
+fi
+
 if [ -f /opt/mediagoblin/requirements.txt ] ; then
     $VENV/bin/pip install -r /opt/mediagoblin/requirements.txt
 fi
