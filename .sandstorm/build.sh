@@ -19,6 +19,8 @@ if [ -f /opt/mediagoblin/requirements.txt ] ; then
 fi
 
 cd /opt/mediagoblin
+mkdir -p /opt/mediagoblin/mediagoblin/plugins/sandstorm
+cp -f -r /opt/app/auth-plugin/* /opt/mediagoblin/mediagoblin/plugins/sandstorm/
 test -L /opt/mediagoblin/mediagoblin.ini || sudo ln -s /var/mediagoblin.ini /opt/mediagoblin/mediagoblin.ini
 test -L /opt/mediagoblin/user_dev || sudo ln -s /var/user_dev /opt/mediagoblin/user_dev
 
