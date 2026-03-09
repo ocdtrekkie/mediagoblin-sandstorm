@@ -19,9 +19,10 @@ unless Vagrant::DEFAULT_SERVER_URL.frozen?
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  host_port = (ENV["VAGRANT_SPK_PORT"] || "6090").to_i
   # Base on a 64-bit Debian box with vboxsf support (ex. contrib-buster64, bullseye64)
   config.vm.box = "debian/bookworm64"
-  config.vm.post_up_message = "Your virtual server is running at: http://local.sandstorm.io:6090"
+  config.vm.post_up_message = "Your virtual server is running at: http://local.sandstorm.io:#{host_port}"
 
 
   if Vagrant.has_plugin?("vagrant-vbguest") then
@@ -34,10 +35,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vbguest.auto_update = false
   end
 
-  # We forward port 6090, the vagrant-spk web port, so that developers can
-  # visit their Sandstorm app from their browser as local.sandstorm.io:6090
-  # (aka 127.0.0.1:6090).
-  config.vm.network :forwarded_port, guest: 6090, host: 6090, host_ip: "127.0.0.1"
+  # We forward guest port 6090 (the vagrant-spk web port) to a configurable
+  # host port so developers can visit local.sandstorm.io:<host_port>.
+  config.vm.network :forwarded_port, guest: 6090, host: host_port, host_ip: "127.0.0.1"
 
   # Use a shell script to "provision" the box. This installs Sandstorm using
   # the bundled installer.
