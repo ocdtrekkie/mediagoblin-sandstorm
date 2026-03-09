@@ -29,11 +29,7 @@ if [ -d /opt/mediagoblin ] && [ ! -w /opt/mediagoblin ]; then
     sudo chown -R "$(id -u):$(id -g)" /opt/mediagoblin
 fi
 
-# Upstream setup.cfg can reference mediagoblin.__version__, which may be missing.
-# Pin a local version string for the dev package build path.
-if grep -Eq '^version[[:space:]]*=[[:space:]]*attr:[[:space:]]*mediagoblin\.__version__[[:space:]]*$' /opt/mediagoblin/setup.cfg ; then
-    sudo sed -i -E 's/^version[[:space:]]*=[[:space:]]*attr:[[:space:]]*mediagoblin\.__version__[[:space:]]*$/version = 0+sandstorm/' /opt/mediagoblin/setup.cfg
-fi
+git -C /opt/mediagoblin apply /opt/app/upstream-changes.diff || git -C /opt/mediagoblin apply /opt/app/upstream-changes.diff -R --check && echo upstream-changes patch already applied
 
 if [ -f /opt/mediagoblin/requirements.txt ] ; then
     REQS_HASH_FILE="$BUILD_STATE_DIR/requirements.sha256"

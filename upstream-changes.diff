@@ -1,0 +1,84 @@
+diff --git a/mediagoblin/templates/mediagoblin/base.html b/mediagoblin/templates/mediagoblin/base.html
+index 4bbaa21c..0dc751d6 100644
+--- a/mediagoblin/templates/mediagoblin/base.html
++++ b/mediagoblin/templates/mediagoblin/base.html
+@@ -103,11 +103,6 @@
+                    >{% trans %}log out{% endtrans %}</a>
+                   {% endif %}
+                 {%- elif auth %}
+-                <a href=
+-                  "{{ request.urlgen('mediagoblin.auth.login') }}"
+-                  >
+-                    {%- trans %}Log in{% endtrans -%}
+-                  </a>
+                 {%- endif %}
+               </div>
+               <div class="clear"></div>
+@@ -130,9 +125,6 @@
+                     </a>
+                     &middot;
+                     {% template_hook("blog_dashboard_home") %}
+-                    <a id="logout" href=
+-                      "{{ request.urlgen('mediagoblin.auth.logout') }}"
+-                      >{% trans %}Log out{% endtrans %}</a>
+                   </p>
+                   <a class="button_action" href="{{ request.urlgen('mediagoblin.submit.start') }}">
+                     {%- trans %}Add media{% endtrans -%}
+diff --git a/mediagoblin/templates/mediagoblin/bits/frontpage_welcome.html b/mediagoblin/templates/mediagoblin/bits/frontpage_welcome.html
+index b3333e47..22e819b7 100644
+--- a/mediagoblin/templates/mediagoblin/bits/frontpage_welcome.html
++++ b/mediagoblin/templates/mediagoblin/bits/frontpage_welcome.html
+@@ -24,7 +24,7 @@
+         <h1>{% trans %}Hi there, welcome to this MediaGoblin site!{% endtrans %}</h1>
+         <p>{% trans %}This site is running <a href="http://mediagoblin.org">MediaGoblin</a>, an extraordinarily great piece of media hosting software.{% endtrans %}</p>
+         {% if auth %}
+-        <p>{% trans %}To add your own media, place comments, and more, you can log in with your MediaGoblin account.{% endtrans %}</p>
++        <p>{% trans %}To add your own media, place comments, and more, you can log in with your Sandstorm account.{% endtrans %}</p>
+         {% if allow_registration %}
+           <p>{% trans %}Don't have one yet? It's easy!{% endtrans %}</p>
+           <a class="button_action_highlight" href=
+@@ -35,9 +35,6 @@
+           {%- endtrans %}
+         {% endif %}
+         {% endif %}
+-          {% trans %}
+-            <a class="button_action" href="http://mediagoblin.readthedocs.org/">Set up MediaGoblin on your own server</a>
+-          {%- endtrans %}
+       </div>
+       <div class="four columns offset-by-one">
+         <img class="welcomeimage" src="{{ request.staticdirect('/images/home_goblin.png') }}">
+diff --git a/mediagoblin/views.py b/mediagoblin/views.py
+index f38d9278..22079730 100644
+--- a/mediagoblin/views.py
++++ b/mediagoblin/views.py
+@@ -18,13 +18,16 @@ from mediagoblin import mg_globals
+ from mediagoblin.db.models import MediaEntry
+ from mediagoblin.tools.pagination import Pagination
+ from mediagoblin.tools.pluginapi import hook_handle
+-from mediagoblin.tools.response import render_to_response, render_404
++from mediagoblin.tools.response import render_to_response, render_404, redirect
+ from mediagoblin.decorators import uses_pagination, user_not_banned
+ 
+ 
+ @user_not_banned
+ @uses_pagination
+ def default_root_view(request, page):
++    user_id = request.headers.get('X-Sandstorm-User-Id', None)
++    if not request.user and user_id:
++        return redirect(request,'mediagoblin.plugins.sandstorm.login')
+     cursor = request.db.query(MediaEntry).filter_by(state='processed').\
+         order_by(MediaEntry.created.desc())
+ 
+diff --git a/setup.cfg b/setup.cfg
+index 2c2b2f40..0a7327f9 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -16,7 +16,7 @@
+ 
+ [metadata]
+ name = mediagoblin
+-version = attr: mediagoblin.__version__
++version = 0+sandstorm
+ author = MediaGoblin contributors
+ author_email = mediagoblin-devel@gnu.org
+ license = AGPLv3

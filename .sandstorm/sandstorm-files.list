@@ -75,6 +75,7 @@ opt/mediagoblin/lib/python3.11/site-packages/alembic/autogenerate/compare/__pyca
 opt/mediagoblin/lib/python3.11/site-packages/alembic/autogenerate/compare/__pycache__/tables.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/autogenerate/compare/__pycache__/types.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/autogenerate/compare/__pycache__/util.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/command.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/_autogen.cpython-311.pyc
@@ -85,6 +86,7 @@ opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/mysql.cpyth
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/oracle.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/postgresql.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/__pycache__/sqlite.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/ddl/impl.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/base.cpython-311.pyc
@@ -92,17 +94,23 @@ opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/batc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/ops.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/schemaobj.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/__pycache__/toimpl.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/base.py
+opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/ops.py
+opt/mediagoblin/lib/python3.11/site-packages/alembic/operations/toimpl.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/__init__.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/__pycache__/environment.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/__pycache__/migration.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/__pycache__/plugins.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/environment.py
+opt/mediagoblin/lib/python3.11/site-packages/alembic/runtime/migration.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/script
 opt/mediagoblin/lib/python3.11/site-packages/alembic/script/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/script/__pycache__/base.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/script/__pycache__/revision.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/script/__pycache__/write_hooks.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/script/base.py
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/compat.cpython-311.pyc
@@ -112,6 +120,7 @@ opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/langhelper
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/messaging.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/pyfiles.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/alembic/util/__pycache__/sqla_compat.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/alembic/util/pyfiles.py
 opt/mediagoblin/lib/python3.11/site-packages/amqp
 opt/mediagoblin/lib/python3.11/site-packages/amqp-5.3.1.dist-info
 opt/mediagoblin/lib/python3.11/site-packages/amqp-5.3.1.dist-info/METADATA
@@ -614,6 +623,7 @@ opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/alembic.i
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/env.py
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions/.gitkeep
+opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions/52bf0ccbedc1_initial_revision.py
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions/__pycache__/101510e3a713_removes_graveyard_items_from_.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions/__pycache__/228916769bd2_ensure_report_object_id_is_nullable.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/mediagoblin/db/migrations/versions/__pycache__/3145accb8fe3_remove_tombstone_comment_wrappers.cpython-311.pyc
@@ -972,6 +982,8 @@ opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/row.c
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/strategies.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/url.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/util.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/base.py
+opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/default.py
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event/__pycache__/api.cpython-311.pyc
@@ -1062,6 +1074,7 @@ opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/sql/__pycache__/traversa
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/sql/__pycache__/type_api.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/sql/__pycache__/util.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/sql/__pycache__/visitors.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/util
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/util/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/util/__pycache__/_collections.cpython-311.pyc
