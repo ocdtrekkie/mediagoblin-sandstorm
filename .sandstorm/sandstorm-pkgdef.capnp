@@ -19,13 +19,13 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "MediaGoblin"),
 
-    appVersion = 4,  # Increment this for every release.
+    appVersion = 5,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.7.1"),
+    appMarketingVersion = (defaultText = "0.15.0"),
 
     actions = [
       # Define your "new document" handlers here.
-      ( title = (defaultText = "New MediaGoblin Instance"),
+      ( title = (defaultText = "New MediaGoblin collection"),
         nounPhrase = (defaultText = "collection"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
@@ -39,11 +39,12 @@ const pkgdef :Spk.PackageDefinition = (
       icons = (
         appGrid = (svg = ( embed "../app-graphics/mediagoblin-128.svg")),
         grain = (svg = ( embed "../app-graphics/mediagoblin-24.svg")),
-        market =  (svg = ( embed "../app-graphics/mediagoblin-150.svg")),
+        market = (svg = ( embed "../app-graphics/mediagoblin-150.svg")),
+        marketBig = (svg = ( embed "../app-graphics/mediagoblin-150.svg")),
       ),
 
-      website = "http://mediagoblin.org/",
-      codeUrl = "https://github.com/sandstorm-org/mediagoblin",
+      website = "https://mediagoblin.org/",
+      codeUrl = "https://github.com/sandstorm-org/mediagoblin-sandstorm",
       license = (openSource = agpl3),
       categories = [media],
 
@@ -52,13 +53,16 @@ const pkgdef :Spk.PackageDefinition = (
         #pgpSignature = embed "pgp-signature",
         upstreamAuthor = "MediaGoblin Project",
       ),
-      #pgpKeyring = embed "pgp-keyring",
+      pgpKeyring = embed "pgp-keyring",
 
-      #description = (defaultText = embed "description.md"),
+      description = (defaultText = embed "../README.md"),
+      shortDescription = (defaultText = "Media publishing"),
 
-      #screenshots = [
-      #  (width = 448, height = 376, png = embed "sandstorm-screenshot.png")
-      #],
+      screenshots = [
+        (width = 448, height = 376, png = embed "sandstorm-screenshot.png")
+      ],
+	  
+      changeLog = (defaultText = embed "../CHANGELOG.md"),
     ),
   ),
 
