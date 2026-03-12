@@ -50,7 +50,7 @@ const pkgdef :Spk.PackageDefinition = (
 
       author = (
         contactEmail = "jacob@sandstorm.org",
-        #pgpSignature = embed "pgp-signature",
+        pgpSignature = embed "pgp-signature",
         upstreamAuthor = "MediaGoblin Project",
       ),
       pgpKeyring = embed "pgp-keyring",
@@ -95,7 +95,7 @@ const pkgdef :Spk.PackageDefinition = (
   # not have been detected as a dependency during `spk dev`. If you list
   # a directory here, its entire contents will be included recursively.
 
-  bridgeConfig = (viewInfo = (permissions = [(name = "admin")]))
+  bridgeConfig = (viewInfo = (permissions = [(name = "admin")]), apiPath = "/")
 );
 
 const myCommand :Spk.Manifest.Command = (
