@@ -448,6 +448,7 @@ opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/_identifier.cpyt
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/async_utils.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/bccache.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/compiler.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/debug.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/defaults.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/environment.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/exceptions.cpython-311.pyc
@@ -463,6 +464,7 @@ opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/runtime.cpython-
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/tests.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/utils.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/jinja2/__pycache__/visitor.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/jinja2/environment.py
 opt/mediagoblin/lib/python3.11/site-packages/jsonschema
 opt/mediagoblin/lib/python3.11/site-packages/jsonschema-4.26.0.dist-info
 opt/mediagoblin/lib/python3.11/site-packages/jsonschema-4.26.0.dist-info/METADATA
@@ -984,6 +986,7 @@ opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/url.c
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/__pycache__/util.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/base.py
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/default.py
+opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/engine/result.py
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/event/__pycache__/api.cpython-311.pyc
@@ -1038,6 +1041,7 @@ opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/orm/__pycache__/sync.cpy
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/orm/__pycache__/unitofwork.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/orm/__pycache__/util.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/orm/__pycache__/writeonly.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/orm/query.py
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/pool
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/pool/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/sqlalchemy/pool/__pycache__/base.cpython-311.pyc
@@ -1128,6 +1132,9 @@ opt/mediagoblin/lib/python3.11/site-packages/waitress/__pycache__/task.cpython-3
 opt/mediagoblin/lib/python3.11/site-packages/waitress/__pycache__/trigger.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/waitress/__pycache__/utilities.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/waitress/__pycache__/wasyncore.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/waitress/channel.py
+opt/mediagoblin/lib/python3.11/site-packages/waitress/proxy_headers.py
+opt/mediagoblin/lib/python3.11/site-packages/waitress/task.py
 opt/mediagoblin/lib/python3.11/site-packages/wcwidth-0.6.0.dist-info
 opt/mediagoblin/lib/python3.11/site-packages/wcwidth-0.6.0.dist-info/METADATA
 opt/mediagoblin/lib/python3.11/site-packages/webtest-3.0.7.dist-info
@@ -1163,6 +1170,7 @@ opt/mediagoblin/lib/python3.11/site-packages/werkzeug/middleware
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/middleware/__init__.py
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/middleware/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/middleware/__pycache__/shared_data.cpython-311.pyc
+opt/mediagoblin/lib/python3.11/site-packages/werkzeug/middleware/shared_data.py
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/routing
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/routing/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/lib/python3.11/site-packages/werkzeug/routing/__pycache__/converters.cpython-311.pyc
@@ -1401,12 +1409,15 @@ opt/mediagoblin/mediagoblin/tools/__pycache__/translate.cpython-311.pyc
 opt/mediagoblin/mediagoblin/tools/__pycache__/url.cpython-311.pyc
 opt/mediagoblin/mediagoblin/tools/__pycache__/workbench.cpython-311.pyc
 opt/mediagoblin/mediagoblin/tools/crypto.py
+opt/mediagoblin/mediagoblin/tools/response.py
+opt/mediagoblin/mediagoblin/tools/template.py
 opt/mediagoblin/mediagoblin/user_pages
 opt/mediagoblin/mediagoblin/user_pages/__pycache__/__init__.cpython-311.pyc
 opt/mediagoblin/mediagoblin/user_pages/__pycache__/forms.cpython-311.pyc
 opt/mediagoblin/mediagoblin/user_pages/__pycache__/lib.cpython-311.pyc
 opt/mediagoblin/mediagoblin/user_pages/__pycache__/routing.cpython-311.pyc
 opt/mediagoblin/mediagoblin/user_pages/__pycache__/views.cpython-311.pyc
+opt/mediagoblin/mediagoblin/views.py
 opt/mediagoblin/paste.ini
 opt/mediagoblin/pyvenv.cfg
 opt/mediagoblin/user_dev
@@ -1424,6 +1435,7 @@ usr/bin/python3
 usr/bin/python3.11
 usr/bin/rm
 usr/bin/sh
+usr/bin/touch
 usr/bin/which
 usr/bin/which.debianutils
 usr/lib/locale/C.utf8/LC_ADDRESS
