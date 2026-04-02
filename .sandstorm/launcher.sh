@@ -23,7 +23,6 @@ mkdir -p /var/user_dev/media/public/media_entries && mkdir -p /var/user_dev/medi
 
 # Version migration
 test -e /var/VERSION || touch /var/VERSION
-[[ "$(cat /var/VERSION)" == "0.7.1" ]] && (cd /opt/mediagoblin && ./bin/gmg alembic current && echo "Stamping Database...." && ./bin/gmg alembic stamp 52bf0ccbedc1)
 [[ "$(cat /var/VERSION)" == "0.15.0" ]] || (cd /opt/mediagoblin && echo "Upgrading Database...."  && ./bin/gmg dbupdate && echo "0.15.0" > /var/VERSION)
 
 cd /opt/mediagoblin

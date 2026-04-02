@@ -17,6 +17,9 @@ import sqlalchemy as sa
 
 
 def upgrade():
+    if op.get_bind().engine.has_table("sandstorm__user"):
+        return
+    
     op.create_table(
         'sandstorm__user',
         sa.Column('id', sa.Integer(), nullable=False),

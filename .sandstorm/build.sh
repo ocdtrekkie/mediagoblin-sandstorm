@@ -29,6 +29,8 @@ if [ -d /opt/mediagoblin ] && [ ! -w /opt/mediagoblin ]; then
     sudo chown -R "$(id -u):$(id -g)" /opt/mediagoblin
 fi
 
+(cd /opt/mediagoblin && git fetch && git switch -f sandstorm-stable && git pull)
+
 git -C /opt/mediagoblin apply /opt/app/upstream-changes.diff || git -C /opt/mediagoblin apply /opt/app/upstream-changes.diff -R --check && echo upstream-changes patch already applied
 
 if [ -f /opt/mediagoblin/requirements.txt ] ; then
